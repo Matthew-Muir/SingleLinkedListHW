@@ -64,26 +64,57 @@ namespace LinkedListConsole.LinkedListClasses
         //Remove node containing the item. Link adjacent nodes.
         public void Remove(Node node)
         {   
-            //left off here!
+
             ///head is null
             ///head is only node
             ///match at 0
             ///match at n
+            ///match in middle
 
             //no nodes in list
             if (Head == null)
             {
                 return;
             }
+            //head is only node
+            //prob remove
+            //else if (Head.Next == null)
+            //{
+            //    if (Head.Value == node.Value)
+            //    {
+            //        Head = null;
+            //    }
+            //    return;
+            //}
             else
             {
-                var currentNode = Head;
-                while (currentNode != null)
-                {
+                var walker = Head;
+                var runner = Head.Next;
 
+                //check if head node is match
+                if (node.Value == walker.Value)
+                {
+                    Head = runner;
+                    return;
                 }
-                {
 
+                while (runner != null)
+                {
+                    //found node to remove
+                    if (runner.Value == node.Value)
+                    {
+                        //match found at end
+                       if (runner.Next == null)
+                        {
+                            walker.Next = null;
+                        }
+                        else
+                        {
+                            walker.Next = runner.Next;
+                        }
+                    }
+                    walker = walker.Next;
+                    runner = runner.Next;
                 }
             }
         }

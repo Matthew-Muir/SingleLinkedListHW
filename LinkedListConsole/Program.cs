@@ -7,16 +7,39 @@ namespace LinkedListConsole
         static void Main(string[] args)
         {
             var linkedList = new LinkedListClasses.LinkedList();
-            var stringArr = new string[] { "one", "two", "three", "four" };
+            var userInput = 0;
 
-            foreach (var item in stringArr)
+            while (userInput != 6)
             {
-                linkedList.Add(new LinkedListClasses.Node(item));
+                Console.WriteLine(UI.UI.ReturnUI());
+                userInput = int.Parse(System.Console.ReadKey().ToString());
+
+                switch (userInput)
+                {
+                    case 1:
+                        Console.WriteLine(linkedList.GetFirst());
+                        break;
+
+                    case 2:
+                        Console.WriteLine("Enter Node Value");
+                        linkedList.Add(new LinkedListClasses.Node(Console.ReadLine()));
+                        break;
+
+                    case 3:
+                        Console.WriteLine("Enter Value to Remove");
+                        linkedList.Remove(new LinkedListClasses.Node(Console.ReadLine()));
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Enter Value to Search For");
+                        linkedList.Contains(new LinkedListClasses.Node(Console.ReadLine()));
+                        break;
+
+                    default:
+                        break;
+                }
             }
 
-            linkedList.AddFirst(new LinkedListClasses.Node("five"));
-
-            Console.WriteLine(linkedList.Contains(new LinkedListClasses.Node("tyt")));
         }
     }
 }
