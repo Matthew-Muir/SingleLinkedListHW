@@ -12,7 +12,17 @@ namespace LinkedListConsole
             while (userInput != 6)
             {
                 Console.WriteLine(UI.UI.ReturnUI());
-                userInput = int.Parse(System.Console.ReadKey().ToString());
+                try
+                {
+                    userInput = Int32.Parse(Console.ReadKey().KeyChar.ToString());
+
+                }
+                catch (Exception)
+                {
+
+                    userInput = 0;
+                }
+                Console.WriteLine("\n");
 
                 switch (userInput)
                 {
@@ -35,9 +45,16 @@ namespace LinkedListConsole
                         linkedList.Contains(new LinkedListClasses.Node(Console.ReadLine()));
                         break;
 
+                    case 5:
+                        Console.WriteLine(linkedList);
+                        break;
+
                     default:
                         break;
                 }
+                Console.WriteLine("\nPress any key to continue\n");
+                Console.ReadKey();
+                Console.Clear();
             }
 
         }
