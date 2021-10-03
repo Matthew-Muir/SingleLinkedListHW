@@ -37,12 +37,28 @@ namespace LinkedListConsole
 
                     case 3:
                         Console.WriteLine("Enter Value to Remove");
-                        linkedList.Remove(new LinkedListClasses.Node(Console.ReadLine()));
+                        if (linkedList.Remove(new LinkedListClasses.Node(Console.ReadLine())))
+                        {
+                            Console.WriteLine("Node Removed");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Node Not Found");
+                        }
+                        ;
                         break;
 
                     case 4:
                         Console.WriteLine("Enter Value to Search For");
-                        linkedList.Contains(new LinkedListClasses.Node(Console.ReadLine()));
+                        if (linkedList.Contains(new LinkedListClasses.Node(Console.ReadLine())) != null)
+                        {
+                            Console.WriteLine("Node Found");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Node Not Found");
+                        }
+                        
                         break;
 
                     case 5:

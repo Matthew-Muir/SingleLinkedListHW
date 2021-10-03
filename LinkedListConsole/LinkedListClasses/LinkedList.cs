@@ -62,41 +62,25 @@ namespace LinkedListConsole.LinkedListClasses
         }
 
         //Remove node containing the item. Link adjacent nodes.
-        public void Remove(Node node)
+        public bool Remove(Node node)
         {   
-
-            ///head is null
-            ///head is only node
-            ///match at 0
-            ///match at n
-            ///match in middle
 
             //no nodes in list
             if (Head == null)
             {
-                return;
+                return false;
             }
-            //head is only node
-            //prob remove
-            //else if (Head.Next == null)
-            //{
-            //    if (Head.Value == node.Value)
-            //    {
-            //        Head = null;
-            //    }
-            //    return;
-            //}
+            //remove at head
+            else if(Head.Value == node.Value)
+            {
+                Head = Head.Next;
+                return true;
+            }
+
             else
             {
                 var walker = Head;
                 var runner = Head.Next;
-
-                //check if head node is match
-                if (node.Value == walker.Value)
-                {
-                    Head = runner;
-                    return;
-                }
 
                 while (runner != null)
                 {
@@ -112,11 +96,14 @@ namespace LinkedListConsole.LinkedListClasses
                         {
                             walker.Next = runner.Next;
                         }
+
+                        return true;
                     }
                     walker = walker.Next;
                     runner = runner.Next;
                 }
             }
+            return false;
         }
 
         //Add node to end of list;
